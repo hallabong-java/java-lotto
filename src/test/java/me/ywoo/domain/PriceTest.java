@@ -7,29 +7,29 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class PriceTest {
 
     @DisplayName("Price(string) - 숫자 받아서 객체 생성")
     @ParameterizedTest
     @ValueSource(strings = {"14000"})
-    void Price_GenerateInstance(final String priceText){
+    void Price_GenerateInstance(final String priceText) {
         assertThat(new Price(priceText)).isInstanceOf(Price.class);
     }
 
     @DisplayName("ValidateNumber() - 유효한 입력인지 검사")
-    @Test
-    void validate_checkRightNumber(){
-        assertThatThrownBy(()->new Price("abc"))
+    @ParameterizedTest
+    @ValueSource(strings = {"abc", ""})
+    void validate_checkRightNumber(final String priceText) {
+        assertThatThrownBy(() -> new Price(priceText))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("가격을 숫자로 입력해야 합니다.");
     }
 
     @DisplayName("ValidatePrice() - 유효한 가격인지 검사")
     @Test
-    void validate_checkRightPrice(){
-        assertThatThrownBy(()->new Price("14444"))
+    void validate_checkRightPrice() {
+        assertThatThrownBy(() -> new Price("14444"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("1000원 단위로 입력해야 합니다.");
     }
@@ -37,8 +37,8 @@ class PriceTest {
     @DisplayName("ValidateBoundary() - 가격 범위에 있는지 검사")
     @ParameterizedTest
     @ValueSource(strings = {"10000000", "-20000"})
-    void validate_checkBoundary(final String priceText){
-        assertThatThrownBy(()->new Price(priceText))
+    void validate_checkBoundary(final String priceText) {
+        assertThatThrownBy(() -> new Price(priceText))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("가격은 1000원 이상, 100000원 미만입니다.");
     }
