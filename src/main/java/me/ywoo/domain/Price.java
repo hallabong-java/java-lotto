@@ -13,8 +13,8 @@ public class Price {
     public Price(String priceText) {
         validateNumber(priceText);
         this.price = Integer.parseInt(priceText);
-        validatePrice(price);
         validateBoundary(price);
+        validatePrice(price);
     }
 
     private void validateNumber(String priceText) {

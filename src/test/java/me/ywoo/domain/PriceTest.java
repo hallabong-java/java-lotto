@@ -34,7 +34,7 @@ class PriceTest {
                 .hasMessage("1000원 단위로 입력해야 합니다.");
     }
 
-    @DisplayName("ValidateBoundary() - 가격 범위에 있는지 검사")
+    @DisplayName("ValidateBoundary() - 유효한 가격 범위에 있는지 검사")
     @ParameterizedTest
     @ValueSource(strings = {"10000000", "-20000"})
     void validate_checkBoundary(final String priceText) {
