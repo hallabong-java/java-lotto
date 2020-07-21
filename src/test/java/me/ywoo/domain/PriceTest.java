@@ -27,7 +27,7 @@ class PriceTest {
                 .hasMessage("가격을 숫자로 입력해야 합니다.");
     }
 
-    @DisplayName("ValidateNumber() - 유효한 입력인지 검사")
+    @DisplayName("ValidateNumber() - Null이 아닌지 검사")
     @ParameterizedTest
     @NullSource
     void validate_checkNonNull(final String priceText) {
