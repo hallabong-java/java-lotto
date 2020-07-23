@@ -26,17 +26,15 @@ public enum RankMaker {
         if (countOfSameNumber < 3) {
             return NOTHING;
         }
-        if (SECOND.matchRank(countOfSameNumber) && SECOND.bonusMatch == true) {
+        if (SECOND.matchRank(countOfSameNumber) && SECOND.bonusMatch) {
             return SECOND;
         }
-        return Arrays.asList(values())
-                .stream()
+        return Arrays.stream(values())
                 .filter(rankMaker -> rankMaker.matchRank(countOfSameNumber)
                         && rankMaker != SECOND)
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException("count가 null입니다!"));
     }
-
 
     public boolean matchRank(int countOfSameNumber){
         return this.countOfSameNumber == countOfSameNumber;
