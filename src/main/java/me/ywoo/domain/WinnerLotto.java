@@ -5,11 +5,13 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class WinnerLotto {
-
     private static final String DELIMITER = ", ";
-    public static final ArrayList<Integer> winnerNumbers = new ArrayList<Integer>();
 
-    public WinnerLotto() { }
+    public static ArrayList<Integer> winnerNumbers;
+
+    public WinnerLotto() {
+        winnerNumbers = new ArrayList<Integer>();
+    }
 
     public WinnerLotto(final String inputNumbers) {
         findDuplication(createWinnerNumbers(inputNumbers));
