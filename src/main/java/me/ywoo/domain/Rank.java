@@ -1,10 +1,8 @@
 package me.ywoo.domain;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
 
-public enum RankMaker {
+public enum Rank {
     NOTHING(0, 0, false),
     FIFTH(3, 5000, false),
     FORTH(4, 50000, false),
@@ -12,17 +10,17 @@ public enum RankMaker {
     SECOND(6, 30000000, true),
     FIRST(6, 2000000000, false);
 
-    private int countOfSameNumber;
-    private int priceOfLotto;
-    private boolean bonusMatch;
+    private final int countOfSameNumber;
+    private final long priceOfLotto;
+    private final boolean bonusMatch;
 
-    RankMaker(int countOfSameNumber, int priceOfLotto, boolean bonusMatch) {
+    Rank(int countOfSameNumber, long priceOfLotto, boolean bonusMatch) {
         this.countOfSameNumber = countOfSameNumber;
         this.priceOfLotto = priceOfLotto;
         this.bonusMatch = bonusMatch;
     }
 
-    public static RankMaker valueOf(int countOfSameNumber, int priceOfLotto, boolean bonusMatch) {
+    public static Rank valueOf(int countOfSameNumber) {
         if (countOfSameNumber < 3) {
             return NOTHING;
         }
@@ -30,8 +28,8 @@ public enum RankMaker {
             return SECOND;
         }
         return Arrays.stream(values())
-                .filter(rankMaker -> rankMaker.matchRank(countOfSameNumber)
-                        && rankMaker != SECOND)
+                .filter(rank -> rank.matchRank(countOfSameNumber)
+                        && rank != SECOND)
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException("count가 null입니다!"));
     }
