@@ -11,16 +11,17 @@ public class ResultLotto {
 
     public ResultLotto() {
         result = new HashMap<>();
-        for(Rank rank : Rank.values()){
+        for (Rank rank : Rank.values()) {
             result.put(rank, INITIAL_COUNT);
         }
     }
 
-    public Map<Rank, Integer> calculateResult(UserLottoTickets userLottoTickets){
+    public Map<Rank, Integer> calculateResult(UserLottoTickets userLottoTickets) {
         Objects.requireNonNull(userLottoTickets, "가진 티켓이 없습니다.");
-        for(RandomNumbers randomNumbers : userLottoTickets.lottoNumbers){
-            Rank rank = Rank.valueOf(randomNumbers.searchMatchNumber(WinnerLotto.winnerNumbers));
-            result.put(rank, result.get(rank)+1);
+        for (RandomNumbers randomNumbers : userLottoTickets.lottoNumbers) {
+            Rank rank = Rank.valueOf(randomNumbers.searchMatchNumber(WinnerLotto.winnerNumbers),
+                    BonusBall.checkHavingBonusBall(randomNumbers.randomNumbers));
+            result.put(rank, result.get(rank) + 1);
         }
         return result;
     }
