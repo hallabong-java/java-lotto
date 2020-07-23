@@ -10,6 +10,8 @@ public enum Rank {
     SECOND(6, 30000000, true),
     FIRST(6, 2000000000, false);
 
+    private static final int minimalToPrize = 3;
+
     private final int countOfSameNumber;
     private final long priceOfLotto;
     private final boolean bonusMatch;
@@ -20,11 +22,11 @@ public enum Rank {
         this.bonusMatch = bonusMatch;
     }
 
-    public static Rank valueOf(int countOfSameNumber) {
-        if (countOfSameNumber < 3) {
+    public static Rank valueOf(int countOfSameNumber, boolean bonusMatch) {
+        if (countOfSameNumber < minimalToPrize) {
             return NOTHING;
         }
-        if (SECOND.matchRank(countOfSameNumber) && SECOND.bonusMatch) {
+        if (SECOND.matchRank(countOfSameNumber) && SECOND.bonusMatch == bonusMatch) {
             return SECOND;
         }
         return Arrays.stream(values())
