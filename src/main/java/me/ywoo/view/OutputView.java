@@ -1,19 +1,27 @@
 package me.ywoo.view;
 
+import me.ywoo.domain.RandomNumbers;
+
 import java.util.ArrayList;
 
 public class OutputView {
-    public static void printPrice(int price){
-        System.out.println(price);
-    }
     public static void printCountOfLotto(int count){
         System.out.println(count+"를 구매했습니다.");
     }
-    public static void printLotto(ArrayList<Integer> UserLotto){
-        System.out.print("[");
-        for(int lotto : UserLotto){
-            System.out.print(lotto+", ");
+
+    public static void printTickets(ArrayList<RandomNumbers> UserLotto){
+        for(RandomNumbers randomNumbers : UserLotto){
+            makeString(randomNumbers);
         }
-        System.out.print("]");
     }
+
+    public static void makeString(RandomNumbers randomNumbers){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("[");
+        for(Integer numbers : randomNumbers.randomNumbers){
+            stringBuilder.append(String.join(", "));
+        }
+        stringBuilder.append("]");
+    }
+
 }
