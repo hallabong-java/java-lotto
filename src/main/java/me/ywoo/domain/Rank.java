@@ -39,4 +39,8 @@ public enum Rank {
     public boolean matchRank(int countOfSameNumber){
         return this.countOfSameNumber == countOfSameNumber;
     }
+
+    public long getPriceOfLotto() {
+        return priceOfLotto;
+    }
 }
