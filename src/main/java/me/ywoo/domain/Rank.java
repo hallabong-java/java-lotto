@@ -43,4 +43,8 @@ public enum Rank {
     public long getPriceOfLotto() {
         return priceOfLotto;
     }
+
+    public int getCountOfSameNumber() {
+        return countOfSameNumber;
+    }
 }
