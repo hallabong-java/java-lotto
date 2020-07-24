@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 
+import java.util.ArrayList;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -18,8 +20,8 @@ class ResultLottoTest {
     @DisplayName("calculateResult() - Null이 아닌지 검사")
     @ParameterizedTest
     @NullSource
-    void calculateResult_checkNonNull(final UserLottoTickets userLottoTickets) {
-        assertThatThrownBy(() -> new ResultLotto().calculateResult(userLottoTickets))
+    void calculateResult_checkNonNull(final ArrayList<RandomNumbers> lottoNumbers, final ArrayList<Integer> winnerNumbers, final int bonusBall) {
+        assertThatThrownBy(() -> new ResultLotto().calculateResult(lottoNumbers, winnerNumbers, bonusBall))
                 .isInstanceOf(NullPointerException.class)
                 .hasMessage("가진 티켓이 없습니다.");
     }
