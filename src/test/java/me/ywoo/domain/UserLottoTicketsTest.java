@@ -18,7 +18,7 @@ class UserLottoTicketsTest {
     @ParameterizedTest
     @ValueSource(ints = {1, 10})
     void UserLottoTickets_generateTickets(final int countOfLotto) {
-        int actual = new UserLottoTickets(countOfLotto).lottoNumbers.size();
+        int actual = new UserLottoTickets(countOfLotto).getLottoNumbers().size();
 
         assertThat(actual).isEqualTo(countOfLotto);
     }
