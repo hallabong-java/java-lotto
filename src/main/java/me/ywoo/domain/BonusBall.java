@@ -3,7 +3,7 @@ package me.ywoo.domain;
 import java.util.ArrayList;
 
 public class BonusBall {
-    public static int bonusBall;
+    private int bonusBall;
 
     public BonusBall(String bonusBallText, ArrayList<Integer> winnerNumbers) {
         this.bonusBall = Integer.parseInt(bonusBallText);
@@ -23,10 +23,11 @@ public class BonusBall {
         }
     }
 
-    public static boolean checkHavingBonusBall(ArrayList<Integer> randomNumbers) {
-        if (randomNumbers.contains(bonusBall)) {
-            return true;
-        }
-        return false;
+    public static boolean checkHavingBonusBall(ArrayList<Integer> randomNumbers, int bonusBall) {
+        return randomNumbers.contains(bonusBall);
+    }
+
+    public int getBonusBall() {
+        return bonusBall;
     }
 }
