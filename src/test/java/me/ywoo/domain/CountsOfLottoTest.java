@@ -10,7 +10,7 @@ class CountsOfLottoTest {
     @Test
     void CountsOfLotto_GenerateInstance() {
         int expected = 3;
-        int actual = new CountsOfLotto(3000).amount;
+        int actual = new CountsOfLotto(3000).getCount();
         assertThat(actual).isEqualTo(expected);
     }
 }

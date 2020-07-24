@@ -3,9 +3,13 @@ package me.ywoo.domain;
 public class CountsOfLotto {
     private static final int PRICE_UNIT = 1000;
     
-    public final int amount;
+    private int count;
 
     public CountsOfLotto(int price) {
-        this.amount = price / PRICE_UNIT;
+        this.count = price / PRICE_UNIT;
+    }
+
+    public int getCount() {
+        return count;
     }
 }
