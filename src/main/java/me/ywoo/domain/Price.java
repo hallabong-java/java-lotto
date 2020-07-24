@@ -8,11 +8,11 @@ public class Price {
     private static final int UPPER_BOUNDARY_OF_PRICE = 100000;
     private static final int LOWER_BOUNDARY_OF_PRICE = 1000;
 
-    public int price;
+    private int price;
 
     public Price(String priceText) {
         validateNumber(priceText);
-        this.price = Integer.parseInt(priceText);
+        price = Integer.parseInt(priceText);
         validateBoundary(price);
         validatePrice(price);
     }
@@ -36,5 +36,9 @@ public class Price {
         if (price < LOWER_BOUNDARY_OF_PRICE || price > UPPER_BOUNDARY_OF_PRICE) {
             throw new IllegalArgumentException("가격은 1000원 이상, 100000원 미만입니다.");
         }
+    }
+
+    public int getPrice() {
+        return price;
     }
 }
