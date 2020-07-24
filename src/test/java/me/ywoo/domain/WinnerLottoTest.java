@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,9 +15,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class WinnerLottoTest {
 
     @DisplayName("createWinnerNumbers(String) - 문자열 받아서 자르고 Integer로 배열 생성")
-    @Test
-    void CreateWinnerNumbers_generateInstance() {
-        ArrayList<Integer> actual = new WinnerLotto().createWinnerNumbers("1, 2, 3, 4");
+    @ParameterizedTest
+    @ValueSource(strings = {"1, 2, 3, 4"})
+    void CreateWinnerNumbers_generateInstance(final String inputNumbers) {
+        ArrayList<Integer> actual = new WinnerLotto(inputNumbers).createWinnerNumbers(inputNumbers);
 
         assertThat(actual).containsExactly(1, 2, 3, 4);
     }
@@ -31,13 +33,14 @@ class WinnerLottoTest {
     }
 
     @DisplayName("findDuplication() - 중복되는 숫자 있는지 검사")
-    @Test
-    void findDuplication_checkDuplicationExceptionThrown() {
+    @ParameterizedTest
+    @ValueSource(strings = {"1, 2, 3, 4"})
+    void findDuplication_checkDuplicationExceptionThrown(final String inputNumbers) {
         ArrayList<Integer> winnerNumbers = new ArrayList<Integer>();
 
         winnerNumbers.addAll(Arrays.asList(13, 11, 20, 19, 40, 11));
 
-        assertThatThrownBy(() -> new WinnerLotto().findDuplication(winnerNumbers))
+        assertThatThrownBy(() -> new WinnerLotto(inputNumbers).findDuplication(winnerNumbers))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("값이 중복되지 않게 입력해야 합니다.");
     }
