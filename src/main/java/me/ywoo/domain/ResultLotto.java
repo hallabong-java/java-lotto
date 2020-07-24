@@ -1,5 +1,6 @@
 package me.ywoo.domain;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -7,7 +8,7 @@ import java.util.Objects;
 public class ResultLotto {
     private static final int INITIAL_COUNT = 0;
 
-    public final Map<Rank, Integer> result;
+    public Map<Rank, Integer> result;
 
     public ResultLotto() {
         result = new HashMap<>();
@@ -16,13 +17,16 @@ public class ResultLotto {
         }
     }
 
-    public Map<Rank, Integer> calculateResult(UserLottoTickets userLottoTickets) {
-        Objects.requireNonNull(userLottoTickets, "가진 티켓이 없습니다.");
-        for (RandomNumbers randomNumbers : userLottoTickets.lottoNumbers) {
-            Rank rank = Rank.valueOf(randomNumbers.searchMatchNumber(WinnerLotto.winnerNumbers),
-                    BonusBall.checkHavingBonusBall(randomNumbers.randomNumbers));
+    public void calculateResult(ArrayList<RandomNumbers> lottoNumbers, ArrayList<Integer> winnerNumbers, int bonusBall) {
+        Objects.requireNonNull(lottoNumbers, "가진 티켓이 없습니다.");
+        for (RandomNumbers randomNumbers : lottoNumbers) {
+            Rank rank = Rank.valueOf(randomNumbers.searchMatchNumber(winnerNumbers),
+                    BonusBall.checkHavingBonusBall(randomNumbers.randomNumbers, bonusBall)); //****
             result.put(rank, result.get(rank) + 1);
         }
+    }
+
+    public Map<Rank, Integer> getResult() {
         return result;
     }
 }
