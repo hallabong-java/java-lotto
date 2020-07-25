@@ -16,12 +16,12 @@ public class OutputView {
     public static void printTickets(ArrayList<RandomNumbers> UserLotto) {
         for (RandomNumbers randomNumbers : UserLotto) {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append(makeString(randomNumbers, stringBuilder));
+            stringBuilder.append(makeString(randomNumbers));
             System.out.println(stringBuilder);
         }
     }
 
-    public static List<String> makeString(RandomNumbers randomNumbers, StringBuilder stringBuilder) {
+    public static List<String> makeString(RandomNumbers randomNumbers) {
         List<String> numbers = new ArrayList<>();
         for(Integer lottoNumbers : randomNumbers.getRandomNumbers()){
             numbers.add(lottoNumbers.toString());
@@ -48,5 +48,9 @@ public class OutputView {
 
     public static void printYield(BigInteger yield) {
         System.out.println("총 수익률은 " + yield + "%입니다.");
+    }
+
+    public static void printOneLine(){
+        System.out.println();
     }
 }

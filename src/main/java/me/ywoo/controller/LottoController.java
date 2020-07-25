@@ -4,6 +4,8 @@ import me.ywoo.domain.*;
 import me.ywoo.view.InputView;
 import me.ywoo.view.OutputView;
 
+import java.util.Map;
+
 public class LottoController {
     public void run(){
         Price price = new Price(InputView.receivePrice());
@@ -13,12 +15,26 @@ public class LottoController {
         UserLottoTickets userLottoTickets = new UserLottoTickets(countsOfLotto.getCount());
         OutputView.printTickets(userLottoTickets.getLottoNumbers());
 
+        OutputView.printOneLine();
         WinnerLotto winnerLotto = new WinnerLotto(InputView.receiveWinnerNumbers());
         BonusBall bonusBall = new BonusBall(InputView.receiveBonusBallNumber(), winnerLotto.getWinnerNumbers());
-
+        ResultLotto resultLotto = new ResultLotto();
         Yield yield = new Yield();
-        yield.calculateYield(yield.calculateTotalEarning(userLottoTickets.getLottoNumbers(), winnerLotto.getWinnerNumbers(), bonusBall.getBonusBall()), price.getPrice());
+        yield.calculateYield(yield.calculateTotalEarning(
+                userLottoTickets.getLottoNumbers(), winnerLotto.getWinnerNumbers(), bonusBall.getBonusBall(), resultLotto), price.getPrice());
+
+
+        OutputView.printOneLine();
         OutputView.printResult();
-        OutputView.printYield(yield.yield);
+        for(Map.Entry<Rank, Integer> entry : resultLotto.getResult().entrySet()){
+            if(!entry.getKey().equals(Rank.SECOND) && !entry.getKey().equals(Rank.NOTHING)){
+                OutputView.printCountOfSameNumber(entry.getKey(), entry.getValue());
+            }
+            if(entry.getKey().equals(Rank.SECOND)) {
+                OutputView.printSecondRankCountOfSameNumber(entry.getKey(), entry.getValue());
+            }
+
+        }
+        OutputView.printYield(yield.getYield());
     }
 }
