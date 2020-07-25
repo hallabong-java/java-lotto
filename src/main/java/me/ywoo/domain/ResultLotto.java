@@ -19,6 +19,8 @@ public class ResultLotto {
 
     public void calculateResult(ArrayList<RandomNumbers> lottoNumbers, ArrayList<Integer> winnerNumbers, int bonusBall) {
         Objects.requireNonNull(lottoNumbers, "가진 티켓이 없습니다.");
+        Objects.requireNonNull(winnerNumbers, "우승 로또가 없습니다.");
+
         for (RandomNumbers randomNumbers : lottoNumbers) {
             Rank rank = Rank.valueOf(randomNumbers.searchMatchNumber(winnerNumbers),
                     BonusBall.checkHavingBonusBall(randomNumbers.randomNumbers, bonusBall)); //****
