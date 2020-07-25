@@ -1,16 +1,15 @@
 package me.ywoo.view;
 
 import me.ywoo.domain.RandomNumbers;
+import me.ywoo.domain.RandomNumbersGenerator;
 import me.ywoo.domain.Rank;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
 
 public class OutputView {
     public static void printCountOfLotto(int count) {
-        System.out.println(count + "를 구매했습니다.");
+        System.out.println(count + "개를 구매했습니다.");
     }
 
     public static void printTickets(ArrayList<RandomNumbers> UserLotto) {
