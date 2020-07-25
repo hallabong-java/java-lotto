@@ -7,7 +7,7 @@ public enum Rank {
     FIFTH(3, 5000, false),
     FORTH(4, 50000, false),
     THIRD(5, 1500000, false),
-    SECOND(6, 30000000, true),
+    SECOND(5, 30000000, true),
     FIRST(6, 2000000000, false);
 
     private static final int minimalToPrize = 3;
@@ -30,8 +30,7 @@ public enum Rank {
             return SECOND;
         }
         return Arrays.stream(values())
-                .filter(rank -> rank.matchRank(countOfSameNumber)
-                        && rank != SECOND)
+                .filter(rank -> rank.matchRank(countOfSameNumber) && rank != SECOND)
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException("count가 null입니다!"));
     }
