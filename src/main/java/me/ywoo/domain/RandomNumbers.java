@@ -5,9 +5,7 @@ import java.util.Random;
 
 import static java.util.stream.Collectors.toList;
 
-public class RandomNumbers {
-    public static final int UPPER_BOUNDARY = 45;
-    public static final int LOWER_BOUNDARY = 1;
+public class RandomNumbers implements RandomNumbersGenerator {
     private static final int SIZE_OF_LOTTO = 6;
 
     public ArrayList<Integer> randomNumbers;
@@ -17,6 +15,7 @@ public class RandomNumbers {
         this.randomNumbers = generateRandomNumber();
     }
 
+    @Override
     public ArrayList<Integer> generateRandomNumber() {
         return (ArrayList<Integer>) new Random().ints(LOWER_BOUNDARY - 1, UPPER_BOUNDARY + 1)
                 .distinct()
@@ -33,5 +32,9 @@ public class RandomNumbers {
             }
         }
         return countOfSameNumbers;
+    }
+
+    public ArrayList<Integer> getRandomNumbers() {
+        return randomNumbers;
     }
 }

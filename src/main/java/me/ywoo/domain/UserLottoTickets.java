@@ -9,7 +9,7 @@ public class UserLottoTickets {
     private ArrayList<RandomNumbers> lottoNumbers;
 
     public UserLottoTickets(int countOfLotto) {
-        lottoNumbers = new ArrayList<RandomNumbers>();
+        lottoNumbers = new ArrayList<>();
         while (countOfLotto-- > MINIMUM_TO_COUNT) {
             lottoNumbers.add(new RandomNumbers());
         }
