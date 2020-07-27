@@ -16,9 +16,9 @@ public class LottoController {
 		Price price = new Price(InputView.receivePrice());
 		CountsOfLotto countsOfLotto = new CountsOfLotto(price.getPrice());
 		OutputView.printCountOfLotto(countsOfLotto.getCount());
+
 		UserLottoTickets userLottoTickets = new UserLottoTickets(countsOfLotto.getCount());
 		OutputView.printTickets(userLottoTickets.getLottoNumbers());
-		OutputView.printOneLine();
 		receiveWinner(userLottoTickets, price.getPrice());
 	}
 
@@ -38,7 +38,6 @@ public class LottoController {
 			yield.calculateTotalEarning(userLottoTickets.getLottoNumbers(), winnerLotto.getWinnerNumbers(),
 				bonusBall, resultLotto), price);
 		printResult(resultLotto, yield.getYield());
-		OutputView.printOneLine();
 	}
 
 	private void printResult(ResultLotto resultLotto, BigInteger yield) {

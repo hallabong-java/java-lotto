@@ -3,10 +3,10 @@ package me.ywoo.domain;
 import java.util.Objects;
 
 public class Price {
-	private static final int PRICE_UNIT = 1000;
+	public static final int PRICE_UNIT = 1_000;
 	private static final int REMAIN_IS_ZERO = 0;
-	private static final int UPPER_BOUNDARY_OF_PRICE = 100000;
-	private static final int LOWER_BOUNDARY_OF_PRICE = 1000;
+	private static final int UPPER_BOUNDARY_OF_PRICE = 100_000;
+	private static final int LOWER_BOUNDARY_OF_PRICE = 1_000;
 
 	private int price;
 

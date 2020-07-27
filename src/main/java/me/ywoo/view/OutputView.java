@@ -18,6 +18,7 @@ public class OutputView {
 			StringBuilder stringBuilder = new StringBuilder();
 			stringBuilder.append(makeString(randomNumbers));
 			System.out.println(stringBuilder);
+			System.out.println();
 		}
 	}
 
@@ -30,6 +31,7 @@ public class OutputView {
 	}
 
 	public static void printResult() {
+		System.out.println();
 		System.out.println("당첨 통계");
 		System.out.println("----------");
 	}
@@ -48,9 +50,5 @@ public class OutputView {
 
 	public static void printYield(BigInteger yield) {
 		System.out.println("총 수익률은 " + yield + "%입니다.");
-	}
-
-	public static void printOneLine() {
-		System.out.println();
 	}
 }
