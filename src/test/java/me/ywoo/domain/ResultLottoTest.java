@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -21,8 +21,8 @@ class ResultLottoTest {
 	@DisplayName("calculateResult() - Null이 아닌지 검사")
 	@ParameterizedTest
 	@NullSource
-	void calculateResult_checkNonNull(final ArrayList<RandomNumbers> lottoNumbers) {
-		final ArrayList<Integer> winnerNumbers = new ArrayList<>();
+	void calculateResult_checkNonNull(final List<RandomNumbers> lottoNumbers) {
+		final List<Integer> winnerNumbers = new ArrayList<>();
 		winnerNumbers.add(3);
 		winnerNumbers.add(22);
 		winnerNumbers.add(13);

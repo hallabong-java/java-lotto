@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -18,7 +19,7 @@ class WinnerLottoTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"1, 2, 3, 4, 5, 6"})
 	void CreateWinnerNumbers_generateInstance(final String inputNumbers) {
-		ArrayList<Integer> actual = new WinnerLotto(inputNumbers).winnerNumbers;
+		List<Integer> actual = new WinnerLotto(inputNumbers).winnerNumbers;
 
 		assertThat(actual).containsExactly(1, 2, 3, 4, 5, 6);
 	}
@@ -36,7 +37,7 @@ class WinnerLottoTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"1, 2, 3, 4"})
 	void validateWinnerNumbers_checkAnotherSizeExceptionThrown(final String inputNumbers) {
-		ArrayList<Integer> winnerNumbers = new ArrayList<Integer>();
+		List<Integer> winnerNumbers = new ArrayList<>();
 
 		winnerNumbers.addAll(Arrays.asList(13, 11, 20, 19, 40));
 

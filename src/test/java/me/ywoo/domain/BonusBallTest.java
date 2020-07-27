@@ -7,12 +7,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class BonusBallTest {
-	private static final ArrayList<Integer> winnerNumbers = new ArrayList<Integer>(
+	private static final List<Integer> winnerNumbers = new ArrayList<Integer>(
 		Arrays.asList(13, 11, 20, 19, 40, 45));
 
 	@DisplayName("BonusBall(string) - 문자열 받아서 Integer로 숫자 생성")

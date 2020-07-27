@@ -13,7 +13,7 @@ public class OutputView {
 		System.out.println(count + "개를 구매했습니다.");
 	}
 
-	public static void printTickets(ArrayList<RandomNumbers> UserLotto) {
+	public static void printTickets(List<RandomNumbers> UserLotto) {
 		for (RandomNumbers randomNumbers : UserLotto) {
 			StringBuilder stringBuilder = new StringBuilder();
 			stringBuilder.append(makeString(randomNumbers));

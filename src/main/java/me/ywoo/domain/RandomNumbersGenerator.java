@@ -1,10 +1,10 @@
 package me.ywoo.domain;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface RandomNumbersGenerator {
 	int UPPER_BOUNDARY = 45;
 	int LOWER_BOUNDARY = 1;
 
-	ArrayList<Integer> generateRandomNumber();
+	List<Integer> generateRandomNumber();
 }

@@ -1,6 +1,7 @@
 package me.ywoo.domain;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -8,7 +9,7 @@ public class WinnerLotto {
 	private static final String DELIMITER = ", ";
 	private static final int LOTTO_NUMBERS_SIZE = 6;
 
-	public ArrayList<Integer> winnerNumbers;
+	public List<Integer> winnerNumbers;
 
 	public WinnerLotto(final String inputNumbers) {
 		winnerNumbers = new ArrayList<>();
@@ -26,19 +27,19 @@ public class WinnerLotto {
 		}
 	}
 
-	public void validateWinnerNumbers(ArrayList<Integer> winnerNumbers) {
+	public void validateWinnerNumbers(List<Integer> winnerNumbers) {
 		if (winnerNumbers.size() != LOTTO_NUMBERS_SIZE) {
 			throw new IllegalArgumentException("로또의 개수와 불일치합니다.");
 		}
 	}
 
-	public void findDuplication(ArrayList<Integer> winnerNumbers) {
+	public void findDuplication(List<Integer> winnerNumbers) {
 		if (winnerNumbers.stream().distinct().collect(Collectors.toList()).size() != winnerNumbers.size()) {
 			throw new IllegalArgumentException("값이 중복되지 않게 입력해야 합니다.");
 		}
 	}
 
-	public ArrayList<Integer> getWinnerNumbers() {
+	public List<Integer> getWinnerNumbers() {
 		return winnerNumbers;
 	}
 }

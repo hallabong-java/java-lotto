@@ -1,12 +1,13 @@
 package me.ywoo.domain;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class UserLottoTickets {
 	private static final int MINIMUM_TO_COUNT = 0;
 
-	private ArrayList<RandomNumbers> lottoNumbers;
+	private List<RandomNumbers> lottoNumbers;
 
 	public UserLottoTickets(int countOfLotto) {
 		lottoNumbers = new ArrayList<>();
@@ -16,7 +17,7 @@ public class UserLottoTickets {
 		Objects.requireNonNull(lottoNumbers, "발행된 로또 티켓이 없습니다.");
 	}
 
-	public ArrayList<RandomNumbers> getLottoNumbers() {
+	public List<RandomNumbers> getLottoNumbers() {
 		return lottoNumbers;
 	}
 }

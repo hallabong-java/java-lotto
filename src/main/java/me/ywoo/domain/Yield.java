@@ -1,7 +1,7 @@
 package me.ywoo.domain;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -9,7 +9,7 @@ public class Yield {
 	public BigInteger yield;
 	public BigInteger totalEarning;
 
-	public BigInteger calculateTotalEarning(ArrayList<RandomNumbers> lottoNumbers, ArrayList<Integer> winnerNumbers,
+	public BigInteger calculateTotalEarning(List<RandomNumbers> lottoNumbers, List<Integer> winnerNumbers,
 		int bonusBall, ResultLotto resultLotto) {
 		Objects.requireNonNull(lottoNumbers, "가진 티켓이 없습니다.");
 
