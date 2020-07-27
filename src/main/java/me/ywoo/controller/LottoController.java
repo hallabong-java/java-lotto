@@ -18,18 +18,25 @@ public class LottoController {
 		OutputView.printCountOfLotto(countsOfLotto.getCount());
 		UserLottoTickets userLottoTickets = new UserLottoTickets(countsOfLotto.getCount());
 		OutputView.printTickets(userLottoTickets.getLottoNumbers());
-		calculateResult(userLottoTickets, price.getPrice());
 		OutputView.printOneLine();
+		receiveWinner(userLottoTickets, price.getPrice());
 	}
 
-	private void calculateResult(UserLottoTickets userLottoTickets, int price) {
+	private void receiveWinner(UserLottoTickets userLottoTickets, int price){
 		WinnerLotto winnerLotto = new WinnerLotto(InputView.receiveWinnerNumbers());
-		BonusBall bonusBall = new BonusBall(InputView.receiveBonusBallNumber(), winnerLotto.getWinnerNumbers());
+		BonusBall bonusBall = new BonusBall(InputView.receiveBonusBallNumber());
+		if (winnerLotto.checkHavingBonusBall(bonusBall.getBonusBall())) {
+			bonusBall.duplicationException();
+		}
+		calculateResult(userLottoTickets,winnerLotto, price, bonusBall.getBonusBall());
+	}
+
+	private void calculateResult(UserLottoTickets userLottoTickets, WinnerLotto winnerLotto, int price, int bonusBall) {
 		ResultLotto resultLotto = new ResultLotto();
 		Yield yield = new Yield();
 		yield.calculateYield(
 			yield.calculateTotalEarning(userLottoTickets.getLottoNumbers(), winnerLotto.getWinnerNumbers(),
-				bonusBall.getBonusBall(), resultLotto), price);
+				bonusBall, resultLotto), price);
 		printResult(resultLotto, yield.getYield());
 		OutputView.printOneLine();
 	}

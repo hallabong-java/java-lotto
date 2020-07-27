@@ -39,6 +39,10 @@ public class WinnerLotto {
 		}
 	}
 
+	public boolean checkHavingBonusBall(Integer bonusBall){
+		return winnerNumbers.contains(bonusBall);
+	}
+
 	public List<Integer> getWinnerNumbers() {
 		return winnerNumbers;
 	}

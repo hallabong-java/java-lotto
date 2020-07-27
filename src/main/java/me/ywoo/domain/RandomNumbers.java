@@ -35,6 +35,10 @@ public class RandomNumbers implements RandomNumbersGenerator {
 		return countOfSameNumbers;
 	}
 
+	public boolean searchNumber(Integer anyNumber){
+		return randomNumbers.contains(anyNumber);
+	}
+
 	public List<Integer> getRandomNumbers() {
 		return randomNumbers;
 	}
