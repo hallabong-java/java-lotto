@@ -9,7 +9,7 @@ public class WinnerLotto implements SearchAnyNumber{
 	private static final String DELIMITER = ", ";
 	private static final int LOTTO_NUMBERS_SIZE = 6;
 
-	public List<Integer> winnerNumbers;
+	private List<Integer> winnerNumbers;
 
 	public WinnerLotto(final String inputNumbers) {
 		winnerNumbers = new ArrayList<>();

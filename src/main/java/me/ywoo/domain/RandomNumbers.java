@@ -11,7 +11,7 @@ public class RandomNumbers implements SearchAnyNumber {
 	public static int LOWER_BOUNDARY = 1;
 	private static final int SIZE_OF_LOTTO = 6;
 
-	public List<Integer> randomNumbers;
+	private List<Integer> randomNumbers;
 
 	public RandomNumbers() {
 		randomNumbers = new ArrayList<>();
