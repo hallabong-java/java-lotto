@@ -8,7 +8,7 @@ import java.util.Objects;
 public class ResultLotto {
 	private static final int INITIAL_COUNT = 0;
 
-	public Map<Rank, Integer> result;
+	private Map<Rank, Integer> result;
 
 	public ResultLotto() {
 		result = new LinkedHashMap<>();
@@ -23,7 +23,8 @@ public class ResultLotto {
 		Objects.requireNonNull(winnerNumbers, "우승 로또가 없습니다.");
 
 		for (RandomNumbers randomNumbers : lottoNumbers) {
-			Rank rank = Rank.valueOf(randomNumbers.giveCountOfMatchNumber(winnerNumbers), randomNumbers.searchNumber(bonusBall));
+			int countsOfMatchNumber = randomNumbers.giveCountOfMatchNumber(winnerNumbers);
+			Rank rank = Rank.valueOf(countsOfMatchNumber, randomNumbers.searchNumber(bonusBall));
 			result.put(rank, result.get(rank) + 1);
 		}
 	}
