@@ -18,7 +18,7 @@ public class WinnerLotto implements SearchAnyNumber{
 		findDuplication(winnerNumbers);
 	}
 
-	public void createWinnerNumbers(final String inputNumbers) {
+	private void createWinnerNumbers(final String inputNumbers) {
 		Objects.requireNonNull(inputNumbers, "숫자가 null입니다.");
 
 		for (String numberText : inputNumbers.split(DELIMITER)) {
@@ -27,14 +27,15 @@ public class WinnerLotto implements SearchAnyNumber{
 		}
 	}
 
-	public void validateWinnerNumbers(List<Integer> winnerNumbers) {
+	private void validateWinnerNumbers(List<Integer> winnerNumbers) {
 		if (winnerNumbers.size() != LOTTO_NUMBERS_SIZE) {
 			throw new IllegalArgumentException("로또의 개수와 불일치합니다.");
 		}
 	}
 
-	public void findDuplication(List<Integer> winnerNumbers) {
-		if (winnerNumbers.stream().distinct().collect(Collectors.toList()).size() != winnerNumbers.size()) {
+	private void findDuplication(List<Integer> winnerNumbers) {
+		int sizeOfRemoveDuplication = winnerNumbers.stream().distinct().collect(Collectors.toList()).size();
+		if (sizeOfRemoveDuplication != winnerNumbers.size()) {
 			throw new IllegalArgumentException("값이 중복되지 않게 입력해야 합니다.");
 		}
 	}
