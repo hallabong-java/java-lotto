@@ -10,7 +10,7 @@ public enum Rank {
 	SECOND(5, 30_000_000, true),
 	FIRST(6, 2_000_000_000, false);
 
-	private static final int minimalToPrize = 3;
+	private static final int MINIMAL_TO_PRIZE = 3;
 
 	private final int countOfSameNumber;
 	private final long priceOfLotto;
@@ -23,7 +23,7 @@ public enum Rank {
 	}
 
 	public static Rank valueOf(int countOfSameNumber, boolean bonusMatch) {
-		if (countOfSameNumber < minimalToPrize) {
+		if (countOfSameNumber < MINIMAL_TO_PRIZE) {
 			return NOTHING;
 		}
 		if (SECOND.matchRank(countOfSameNumber) && SECOND.bonusMatch == bonusMatch) {
@@ -32,10 +32,10 @@ public enum Rank {
 		return Arrays.stream(values())
 			.filter(rank -> rank.matchRank(countOfSameNumber) && rank != SECOND)
 			.findAny()
-			.orElseThrow(() -> new IllegalArgumentException("count가 null입니다!"));
+			.get();
 	}
 
-	public boolean matchRank(int countOfSameNumber) {
+	private boolean matchRank(int countOfSameNumber) {
 		return this.countOfSameNumber == countOfSameNumber;
 	}
 
