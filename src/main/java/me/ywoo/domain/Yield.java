@@ -1,6 +1,5 @@
 package me.ywoo.domain;
 
-import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -9,7 +8,7 @@ public class Yield {
 	public Long yield;
 	public Long totalEarning;
 
-	public Long calculateTotalEarning(List<RandomNumbers> lottoNumbers, List<Integer> winnerNumbers,
+	public Long calculateTotalEarning(List<LottoTicket> lottoNumbers, List<Integer> winnerNumbers,
 		int bonusBall, ResultLotto resultLotto) {
 		Objects.requireNonNull(lottoNumbers, "가진 티켓이 없습니다.");
 

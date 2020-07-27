@@ -17,14 +17,14 @@ public class ResultLotto {
 		}
 	}
 
-	public void calculateResult(List<RandomNumbers> lottoNumbers, List<Integer> winnerNumbers,
+	public void calculateResult(List<LottoTicket> lottoNumbers, List<Integer> winnerNumbers,
 		int bonusBall) {
 		Objects.requireNonNull(lottoNumbers, "가진 티켓이 없습니다.");
 		Objects.requireNonNull(winnerNumbers, "우승 로또가 없습니다.");
 
-		for (RandomNumbers randomNumbers : lottoNumbers) {
-			int countsOfMatchNumber = randomNumbers.giveCountOfMatchNumber(winnerNumbers);
-			Rank rank = Rank.valueOf(countsOfMatchNumber, randomNumbers.searchNumber(bonusBall));
+		for (LottoTicket lottoTicket : lottoNumbers) {
+			int countsOfMatchNumber = lottoTicket.giveCountOfMatchNumber(winnerNumbers);
+			Rank rank = Rank.valueOf(countsOfMatchNumber, lottoTicket.searchNumber(bonusBall));
 			result.put(rank, result.get(rank) + 1);
 		}
 	}

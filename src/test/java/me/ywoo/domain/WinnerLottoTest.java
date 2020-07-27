@@ -6,8 +6,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,7 +17,7 @@ class WinnerLottoTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"1, 2, 3, 4, 5, 6"})
 	void CreateWinnerNumbers_generateInstance(final String inputNumbers) {
-		List<Integer> actual = new WinnerLotto(inputNumbers).winnerNumbers;
+		List<Integer> actual = new WinnerLotto(inputNumbers).getWinnerNumbers();
 
 		assertThat(actual).containsExactly(1, 2, 3, 4, 5, 6);
 	}
@@ -37,11 +35,7 @@ class WinnerLottoTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"1, 2, 3, 4"})
 	void validateWinnerNumbers_checkAnotherSizeExceptionThrown(final String inputNumbers) {
-		List<Integer> winnerNumbers = new ArrayList<>();
-
-		winnerNumbers.addAll(Arrays.asList(13, 11, 20, 19, 40));
-
-		assertThatThrownBy(() -> new WinnerLotto(inputNumbers).validateWinnerNumbers(winnerNumbers))
+		assertThatThrownBy(() -> new WinnerLotto(inputNumbers))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessage("로또의 개수와 불일치합니다.");
 	}

@@ -21,7 +21,7 @@ class ResultLottoTest {
 	@DisplayName("calculateResult() - Null이 아닌지 검사")
 	@ParameterizedTest
 	@NullSource
-	void calculateResult_checkNonNull(final List<RandomNumbers> lottoNumbers) {
+	void calculateResult_checkNonNull(final List<LottoTicket> lottoNumbers) {
 		final List<Integer> winnerNumbers = new ArrayList<>();
 		winnerNumbers.add(3);
 		winnerNumbers.add(22);

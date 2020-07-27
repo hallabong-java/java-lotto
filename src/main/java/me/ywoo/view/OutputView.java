@@ -1,9 +1,8 @@
 package me.ywoo.view;
 
-import me.ywoo.domain.RandomNumbers;
+import me.ywoo.domain.LottoTicket;
 import me.ywoo.domain.Rank;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,18 +11,18 @@ public class OutputView {
 		System.out.println(count + "개를 구매했습니다.");
 	}
 
-	public static void printTickets(List<RandomNumbers> UserLotto) {
-		for (RandomNumbers randomNumbers : UserLotto) {
+	public static void printTickets(List<LottoTicket> UserLotto) {
+		for (LottoTicket lottoTicket : UserLotto) {
 			StringBuilder stringBuilder = new StringBuilder();
-			stringBuilder.append(makeString(randomNumbers));
+			stringBuilder.append(makeString(lottoTicket));
 			System.out.println(stringBuilder);
 		}
 		System.out.println();
 	}
 
-	public static List<String> makeString(RandomNumbers randomNumbers) {
+	public static List<String> makeString(LottoTicket lottoTicket) {
 		List<String> numbers = new ArrayList<>();
-		for (Integer lottoNumbers : randomNumbers.getRandomNumbers()) {
+		for (Integer lottoNumbers : lottoTicket.getRandomNumbers()) {
 			numbers.add(lottoNumbers.toString());
 		}
 		return numbers;
