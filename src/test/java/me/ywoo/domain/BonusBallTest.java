@@ -20,22 +20,14 @@ class BonusBallTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"9", "33"})
 	void bonusBall_generateInstance(final String bonusBallText) {
-		assertThat(new BonusBall(bonusBallText, winnerNumbers)).isInstanceOf(BonusBall.class);
+		assertThat(new BonusBall(bonusBallText)).isInstanceOf(BonusBall.class);
 	}
 
 	@DisplayName("validateBoundary() - 범위 내에 들어가는지 검사")
 	@Test
 	void validateBoundary_checkBoundaryOfBonusBallNumber() {
-		assertThatThrownBy(() -> new BonusBall("46", winnerNumbers))
+		assertThatThrownBy(() -> new BonusBall("46"))
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessage("보너스 볼의 값은 1부터 45까지 입니다.");
-	}
-
-	@DisplayName("findDuplication() - 당첨 번호와 중복될 때 검사")
-	@Test
-	void findDuplication_checkDuplicationExceptionThrown() {
-		assertThatThrownBy(() -> new BonusBall("11", winnerNumbers))
-			.isInstanceOf(IllegalArgumentException.class)
-			.hasMessage("보너스 볼의 값이 당첨 로또와 일치합니다.");
 	}
 }

@@ -54,4 +54,12 @@ class WinnerLottoTest {
 			.isInstanceOf(IllegalArgumentException.class)
 			.hasMessage("값이 중복되지 않게 입력해야 합니다.");
 	}
+
+	@DisplayName("checkHavingBonusBall() - bonusBall 가지고 있는지 검사")
+	@ParameterizedTest
+	@ValueSource(strings = {"1, 2, 3, 4, 5, 6"})
+	void checkHavingBonusBall_ExceptionThrown(final String inputNumbers) {
+		boolean actual = new WinnerLotto(inputNumbers).checkHavingBonusBall(6);
+		assertThat(actual).isEqualTo(true);
+	}
 }
