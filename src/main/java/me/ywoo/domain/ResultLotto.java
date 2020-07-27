@@ -1,7 +1,7 @@
 package me.ywoo.domain;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -11,7 +11,7 @@ public class ResultLotto {
 	public Map<Rank, Integer> result;
 
 	public ResultLotto() {
-		result = new HashMap<>();
+		result = new LinkedHashMap<>();
 		for (Rank rank : Rank.values()) {
 			result.put(rank, INITIAL_COUNT);
 		}

@@ -43,7 +43,6 @@ public class LottoController {
 			if (entry.getKey().equals(Rank.SECOND)) {
 				OutputView.printSecondRankCountOfSameNumber(entry.getKey(), entry.getValue());
 			}
-
 		}
 		OutputView.printYield(yield);
 	}
