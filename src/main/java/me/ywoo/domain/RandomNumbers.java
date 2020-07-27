@@ -26,7 +26,7 @@ public class RandomNumbers implements SearchAnyNumber {
 			.collect(toList());
 	}
 
-	public int searchMatchNumber(List<Integer> winnerLotto) {
+	public int giveCountOfMatchNumber(List<Integer> winnerLotto) {
 		int countOfSameNumbers = 0;
 		for (Integer numbers : randomNumbers) {
 			if (winnerLotto.contains(numbers)) {

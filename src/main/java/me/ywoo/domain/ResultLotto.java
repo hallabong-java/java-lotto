@@ -23,7 +23,7 @@ public class ResultLotto {
 		Objects.requireNonNull(winnerNumbers, "우승 로또가 없습니다.");
 
 		for (RandomNumbers randomNumbers : lottoNumbers) {
-			Rank rank = Rank.valueOf(randomNumbers.searchMatchNumber(winnerNumbers), randomNumbers.searchNumber(bonusBall));
+			Rank rank = Rank.valueOf(randomNumbers.giveCountOfMatchNumber(winnerNumbers), randomNumbers.searchNumber(bonusBall));
 			result.put(rank, result.get(rank) + 1);
 		}
 	}
