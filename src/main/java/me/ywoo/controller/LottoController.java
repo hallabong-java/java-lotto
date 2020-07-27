@@ -4,7 +4,6 @@ import me.ywoo.domain.*;
 import me.ywoo.view.InputView;
 import me.ywoo.view.OutputView;
 
-import java.math.BigInteger;
 import java.util.Map;
 
 public class LottoController {
@@ -40,7 +39,7 @@ public class LottoController {
 		printResult(resultLotto, yield.getYield());
 	}
 
-	private void printResult(ResultLotto resultLotto, BigInteger yield) {
+	private void printResult(ResultLotto resultLotto, Long yield) {
 		OutputView.printResult();
 		for (Map.Entry<Rank, Integer> entry : resultLotto.getResult().entrySet()) {
 			printWhichNumber(entry);

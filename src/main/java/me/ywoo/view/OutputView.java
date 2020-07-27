@@ -45,7 +45,7 @@ public class OutputView {
 			String.format("%d개 일치, 보너스 볼 일치 (%d원)- %d개", rank.getCountOfSameNumber(), rank.getPriceOfLotto(), counts));
 	}
 
-	public static void printYield(BigInteger yield) {
+	public static void printYield(Long yield) {
 		System.out.println("총 수익률은 " + yield + "%입니다.");
 	}
 }

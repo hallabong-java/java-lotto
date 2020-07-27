@@ -6,29 +6,28 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Yield {
-	public BigInteger yield;
-	public BigInteger totalEarning;
+	public Long yield;
+	public Long totalEarning;
 
-	public BigInteger calculateTotalEarning(List<RandomNumbers> lottoNumbers, List<Integer> winnerNumbers,
+	public Long calculateTotalEarning(List<RandomNumbers> lottoNumbers, List<Integer> winnerNumbers,
 		int bonusBall, ResultLotto resultLotto) {
 		Objects.requireNonNull(lottoNumbers, "가진 티켓이 없습니다.");
 
-		totalEarning = BigInteger.ZERO;
 		resultLotto.calculateResult(lottoNumbers, winnerNumbers, bonusBall);
 		for (Map.Entry<Rank, Integer> eachRank : resultLotto.getResult().entrySet()) {
-			totalEarning = BigInteger.valueOf(eachRank.getValue() * eachRank.getKey().getPriceOfLotto())
-				.add(totalEarning);
+			totalEarning = (eachRank.getValue() * eachRank.getKey().getPriceOfLotto()) + (totalEarning);
 		}
 		return totalEarning;
 	}
 
-	public BigInteger calculateYield(BigInteger totalEarning, int price) {
+	public Long calculateYield(Long totalEarning, int price) {
 		Objects.requireNonNull(totalEarning, "총 수익이 없습니다.");
-		yield = totalEarning.multiply(BigInteger.valueOf(100)).divide(BigInteger.valueOf(price));
+
+		yield = (totalEarning * 100) / (price);
 		return yield;
 	}
 
-	public BigInteger getYield() {
+	public Long getYield() {
 		return yield;
 	}
 }
