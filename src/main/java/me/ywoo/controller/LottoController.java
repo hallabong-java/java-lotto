@@ -37,13 +37,17 @@ public class LottoController {
 	private void printResult(ResultLotto resultLotto, BigInteger yield) {
 		OutputView.printResult();
 		for (Map.Entry<Rank, Integer> entry : resultLotto.getResult().entrySet()) {
-			if (!entry.getKey().equals(Rank.SECOND) && !entry.getKey().equals(Rank.NOTHING)) {
-				OutputView.printCountOfSameNumber(entry.getKey(), entry.getValue());
-			}
-			if (entry.getKey().equals(Rank.SECOND)) {
-				OutputView.printSecondRankCountOfSameNumber(entry.getKey(), entry.getValue());
-			}
+			printWhichNumber(entry);
 		}
 		OutputView.printYield(yield);
+	}
+
+	private void printWhichNumber(Map.Entry<Rank, Integer> entry) {
+		if (!entry.getKey().equals(Rank.SECOND) && !entry.getKey().equals(Rank.NOTHING)) {
+			OutputView.printCountOfSameNumber(entry.getKey(), entry.getValue());
+		}
+		if (entry.getKey().equals(Rank.SECOND)) {
+			OutputView.printSecondRankCountOfSameNumber(entry.getKey(), entry.getValue());
+		}
 	}
 }
