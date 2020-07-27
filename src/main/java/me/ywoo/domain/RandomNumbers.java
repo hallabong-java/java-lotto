@@ -6,7 +6,9 @@ import java.util.Random;
 
 import static java.util.stream.Collectors.toList;
 
-public class RandomNumbers implements RandomNumbersGenerator {
+public class RandomNumbers implements SearchAnyNumber {
+	public static int UPPER_BOUNDARY = 45;
+	public static int LOWER_BOUNDARY = 1;
 	private static final int SIZE_OF_LOTTO = 6;
 
 	public List<Integer> randomNumbers;
@@ -16,7 +18,6 @@ public class RandomNumbers implements RandomNumbersGenerator {
 		this.randomNumbers = generateRandomNumber();
 	}
 
-	@Override
 	public List<Integer> generateRandomNumber() {
 		return new Random().ints(LOWER_BOUNDARY - 1, UPPER_BOUNDARY + 1)
 			.distinct()
@@ -35,6 +36,7 @@ public class RandomNumbers implements RandomNumbersGenerator {
 		return countOfSameNumbers;
 	}
 
+	@Override
 	public boolean searchNumber(Integer anyNumber){
 		return randomNumbers.contains(anyNumber);
 	}

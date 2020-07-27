@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class WinnerLotto {
+public class WinnerLotto implements SearchAnyNumber{
 	private static final String DELIMITER = ", ";
 	private static final int LOTTO_NUMBERS_SIZE = 6;
 
@@ -39,7 +39,8 @@ public class WinnerLotto {
 		}
 	}
 
-	public boolean checkHavingBonusBall(Integer bonusBall){
+	@Override
+	public boolean searchNumber(Integer bonusBall){
 		return winnerNumbers.contains(bonusBall);
 	}
 

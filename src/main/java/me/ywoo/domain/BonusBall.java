@@ -9,7 +9,7 @@ public class BonusBall {
 	}
 
 	public void validateBoundary(int bonusBall) {
-		if (bonusBall < RandomNumbersGenerator.LOWER_BOUNDARY || bonusBall > RandomNumbersGenerator.UPPER_BOUNDARY) {
+		if (bonusBall < RandomNumbers.LOWER_BOUNDARY || bonusBall > RandomNumbers.UPPER_BOUNDARY) {
 			throw new IllegalArgumentException("보너스 볼의 값은 1부터 45까지 입니다.");
 		}
 	}

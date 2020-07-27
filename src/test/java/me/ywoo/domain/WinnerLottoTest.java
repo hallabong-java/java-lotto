@@ -59,7 +59,7 @@ class WinnerLottoTest {
 	@ParameterizedTest
 	@ValueSource(strings = {"1, 2, 3, 4, 5, 6"})
 	void checkHavingBonusBall_ExceptionThrown(final String inputNumbers) {
-		boolean actual = new WinnerLotto(inputNumbers).checkHavingBonusBall(6);
+		boolean actual = new WinnerLotto(inputNumbers).searchNumber(6);
 		assertThat(actual).isEqualTo(true);
 	}
 }

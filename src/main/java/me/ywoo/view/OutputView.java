@@ -1,7 +1,6 @@
 package me.ywoo.view;
 
 import me.ywoo.domain.RandomNumbers;
-import me.ywoo.domain.RandomNumbersGenerator;
 import me.ywoo.domain.Rank;
 
 import java.math.BigInteger;
@@ -18,8 +17,8 @@ public class OutputView {
 			StringBuilder stringBuilder = new StringBuilder();
 			stringBuilder.append(makeString(randomNumbers));
 			System.out.println(stringBuilder);
-			System.out.println();
 		}
+		System.out.println();
 	}
 
 	public static List<String> makeString(RandomNumbers randomNumbers) {
@@ -37,15 +36,13 @@ public class OutputView {
 	}
 
 	public static void printCountOfSameNumber(Rank rank, Integer counts) {
-		System.out.println(String.format("%d개 일치 (%d원)- %d개",
-			rank.getCountOfSameNumber(), rank.getPriceOfLotto(), counts
-		));
+		System.out.println(
+			String.format("%d개 일치 (%d원)- %d개", rank.getCountOfSameNumber(), rank.getPriceOfLotto(), counts));
 	}
 
 	public static void printSecondRankCountOfSameNumber(Rank rank, Integer counts) {
-		System.out.println(String.format("%d개 일치, 보너스 볼 일치 (%d원)- %d개",
-			rank.getCountOfSameNumber(), rank.getPriceOfLotto(), counts
-		));
+		System.out.println(
+			String.format("%d개 일치, 보너스 볼 일치 (%d원)- %d개", rank.getCountOfSameNumber(), rank.getPriceOfLotto(), counts));
 	}
 
 	public static void printYield(BigInteger yield) {

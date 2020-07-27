@@ -25,7 +25,7 @@ public class LottoController {
 	private void receiveWinner(UserLottoTickets userLottoTickets, int price){
 		WinnerLotto winnerLotto = new WinnerLotto(InputView.receiveWinnerNumbers());
 		BonusBall bonusBall = new BonusBall(InputView.receiveBonusBallNumber());
-		if (winnerLotto.checkHavingBonusBall(bonusBall.getBonusBall())) {
+		if (winnerLotto.searchNumber(bonusBall.getBonusBall())) {
 			bonusBall.duplicationException();
 		}
 		calculateResult(userLottoTickets,winnerLotto, price, bonusBall.getBonusBall());

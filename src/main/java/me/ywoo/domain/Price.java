@@ -11,16 +11,15 @@ public class Price {
 	private int price;
 
 	public Price(String priceText) {
-		validateNumber(priceText);
-		price = Integer.parseInt(priceText);
+		price = validateNumber(priceText);
 		validateBoundary(price);
 		validatePrice(price);
 	}
 
-	private void validateNumber(String priceText) {
+	private int validateNumber(String priceText) {
 		Objects.requireNonNull(priceText, "가격이 null입니다.");
 		try {
-			Integer.parseInt(priceText);
+			return Integer.parseInt(priceText);
 		} catch (NumberFormatException e) {
 			throw new IllegalArgumentException("가격을 숫자로 입력해야 합니다.");
 		}
