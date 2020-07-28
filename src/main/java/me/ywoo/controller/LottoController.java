@@ -21,21 +21,19 @@ public class LottoController {
 		receiveWinner(userLottoTickets, price.getPrice());
 	}
 
-	private void receiveWinner(UserLottoTickets userLottoTickets, int price){
+	private void receiveWinner(UserLottoTickets userLottoTickets, int price) {
 		WinnerLotto winnerLotto = new WinnerLotto(InputView.receiveWinnerNumbers());
 		BonusBall bonusBall = new BonusBall(InputView.receiveBonusBallNumber());
 		if (winnerLotto.searchNumber(bonusBall.getBonusBall())) {
 			bonusBall.duplicationException();
 		}
-		calculateResult(userLottoTickets,winnerLotto, price, bonusBall.getBonusBall());
+		calculateResult(userLottoTickets, winnerLotto, price, bonusBall.getBonusBall());
 	}
 
 	private void calculateResult(UserLottoTickets userLottoTickets, WinnerLotto winnerLotto, int price, int bonusBall) {
 		ResultLotto resultLotto = new ResultLotto();
 		Yield yield = new Yield();
-		yield.calculateYield(
-			yield.calculateTotalEarning(userLottoTickets.getLottoNumbers(), winnerLotto.getWinnerNumbers(),
-				bonusBall, resultLotto), price);
+		yield.calculateYield(userLottoTickets.getLottoNumbers(), winnerLotto.getWinnerNumbers(), bonusBall, resultLotto, price);
 		printResult(resultLotto, yield.getYield());
 	}
 

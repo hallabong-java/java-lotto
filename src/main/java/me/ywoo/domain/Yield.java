@@ -8,22 +8,17 @@ public class Yield {
 	public Long yield;
 	public Long totalEarning;
 
-	public Long calculateTotalEarning(List<LottoTicket> lottoNumbers, List<Integer> winnerNumbers,
-		int bonusBall, ResultLotto resultLotto) {
+	public Long calculateYield(List<LottoTicket> lottoNumbers, List<Integer> winnerNumbers, int bonusBall, ResultLotto resultLotto, int price) {
 		Objects.requireNonNull(lottoNumbers, "가진 티켓이 없습니다.");
+		Objects.requireNonNull(winnerNumbers, "우승 로또가 없습니다.");
+		Objects.requireNonNull(price, "가격이 없습니다.");
 
 		resultLotto.calculateResult(lottoNumbers, winnerNumbers, bonusBall);
-		for (Map.Entry<Rank, Integer> eachRank : resultLotto.getResult().entrySet()) {
-			totalEarning = (eachRank.getValue() * eachRank.getKey().getPriceOfLotto()) + (totalEarning);
+		for (Map.Entry<Rank, Integer> entry : resultLotto.getResult().entrySet()) {
+			Long nowEarning = entry.getValue() * entry.getKey().getPriceOfLotto();
+			totalEarning = (nowEarning) + (totalEarning);
 		}
-		return totalEarning;
-	}
-
-	public Long calculateYield(Long totalEarning, int price) {
-		Objects.requireNonNull(totalEarning, "총 수익이 없습니다.");
-
-		yield = (totalEarning * 100) / (price);
-		return yield;
+		return (totalEarning * 100) / (price);
 	}
 
 	public Long getYield() {
