@@ -20,7 +20,8 @@ public class LottoTicket implements SearchAnyNumber {
 	}
 
 	public List<Integer> generateLottoTicket() {
-		while(SIZE_OF_LOTTO-- > 0){
+		int sizeOfLotto = 6;
+		while(sizeOfLotto-- > 0){
 			Integer nowRandomNumber = new RandomNumber().randomNumber;
 			if(!searchNumber(nowRandomNumber)){
 				randomNumbers.add(nowRandomNumber);

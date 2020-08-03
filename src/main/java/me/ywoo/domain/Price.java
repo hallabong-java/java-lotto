@@ -10,13 +10,13 @@ public class Price {
 
 	private int price;
 
-	public Price(String priceText) {
+	public Price(final String priceText) {
 		price = validateNumber(priceText);
 		validateBoundary(price);
 		validatePrice(price);
 	}
 
-	private int validateNumber(String priceText) {
+	private int validateNumber(final String priceText) {
 		Objects.requireNonNull(priceText, "가격이 null입니다.");
 		try {
 			return Integer.parseInt(priceText);

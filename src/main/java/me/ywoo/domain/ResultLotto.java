@@ -17,8 +17,7 @@ public class ResultLotto {
 		}
 	}
 
-	public void calculateResult(List<LottoTicket> lottoNumbers, List<Integer> winnerNumbers,
-		int bonusBall) {
+	public void calculateResult(List<LottoTicket> lottoNumbers, List<Integer> winnerNumbers, int bonusBall) {
 		Objects.requireNonNull(lottoNumbers, "가진 티켓이 없습니다.");
 		Objects.requireNonNull(winnerNumbers, "우승 로또가 없습니다.");
 

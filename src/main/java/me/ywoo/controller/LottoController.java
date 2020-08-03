@@ -8,41 +8,31 @@ import java.util.Map;
 
 public class LottoController {
 	public void run() {
-		buyLotto();
-	}
-
-	private void buyLotto() {
-		//Price price = new Price(InputView.receivePrice());
-		CountsOfLotto countsOfLotto = new CountsOfLotto(InputView.receivePrice());
-		OutputView.printCountOfLotto(countsOfLotto.getCount());
-
-		UserLottoTickets userLottoTickets = new UserLottoTickets(countsOfLotto.getCount());
-		OutputView.printTickets(userLottoTickets.getLottoNumbers());
-		receiveWinner(userLottoTickets, price.getPrice());
-	}
-
-	private void receiveWinner(UserLottoTickets userLottoTickets, int price) {
-		WinnerLotto winnerLotto = new WinnerLotto(InputView.receiveWinnerNumbers());
-		BonusBall bonusBall = new BonusBall(InputView.receiveBonusBallNumber());
-		if (winnerLotto.searchNumber(bonusBall.getBonusBall())) {
-			bonusBall.duplicationException();
-		}
-		calculateResult(userLottoTickets, winnerLotto, price, bonusBall.getBonusBall());
-	}
-
-	private void calculateResult(UserLottoTickets userLottoTickets, WinnerLotto winnerLotto, int price, int bonusBall) {
-		ResultLotto resultLotto = new ResultLotto();
 		Yield yield = new Yield();
-		yield.calculateYield(userLottoTickets.getLottoNumbers(), winnerLotto.getWinnerNumbers(), bonusBall, resultLotto, price);
-		printResult(resultLotto, yield.getYield());
+		printResult(buyLotto(yield), yield);
 	}
 
-	private void printResult(ResultLotto resultLotto, Long yield) {
+	private Long buyLotto(Yield yield) {
+		final Integer countsOfLottoNumber = new CountsOfLotto(InputView.receivePrice()).getCount();
+		OutputView.printCountOfLotto(countsOfLottoNumber);
+		UserLottoTickets userLottoTickets = new UserLottoTickets(countsOfLottoNumber);
+		OutputView.printTickets(userLottoTickets.getLottoNumbers());
+
+		WinnerLotto winnerLotto = new WinnerLotto(InputView.receiveWinnerNumbers());
+		final Integer bonusBallNumber = new BonusBall(InputView.receiveBonusBallNumber()).getBonusBall();
+		if (winnerLotto.searchNumber(bonusBallNumber)) {
+			throw new IllegalArgumentException("보너스 볼의 값이 당첨 로또와 일치합니다.");
+		}
+		return yield.calculateYield(userLottoTickets.getLottoNumbers(), winnerLotto.getWinnerNumbers(),
+			bonusBallNumber, countsOfLottoNumber * Price.PRICE_UNIT);
+	}
+
+	private void printResult(Long yieldNumber, Yield yield) {
 		OutputView.printResult();
-		for (Map.Entry<Rank, Integer> entry : resultLotto.getResult().entrySet()) {
+		for (Map.Entry<Rank, Integer> entry : yield.getResultLotto().entrySet()) {
 			printWhichNumber(entry);
 		}
-		OutputView.printYield(yield);
+		OutputView.printYield(yieldNumber);
 	}
 
 	private void printWhichNumber(Map.Entry<Rank, Integer> entry) {
