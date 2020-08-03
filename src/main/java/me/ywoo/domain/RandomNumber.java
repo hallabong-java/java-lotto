@@ -13,6 +13,6 @@ public class RandomNumber {
 	public Integer randomNumber;
 
 	public RandomNumber() {
-		this.randomNumber = new Random().nextInt(UPPER_BOUNDARY + 1)+1;
+		this.randomNumber = new Random().nextInt(UPPER_BOUNDARY + 1) + 1;
 	}
 }

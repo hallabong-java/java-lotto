@@ -10,7 +10,7 @@ import static java.util.stream.Collectors.toList;
 public class LottoTicket implements SearchAnyNumber {
 	public static int UPPER_BOUNDARY = 45;
 	public static int LOWER_BOUNDARY = 1;
-	private static final int SIZE_OF_LOTTO = 6;
+	private static int SIZE_OF_LOTTO = 6;
 
 	private List<Integer> randomNumbers;
 
@@ -20,11 +20,13 @@ public class LottoTicket implements SearchAnyNumber {
 	}
 
 	public List<Integer> generateLottoTicket() {
-		return new Random().ints(LOWER_BOUNDARY - 1, UPPER_BOUNDARY + 1)
-			.distinct()
-			.limit(SIZE_OF_LOTTO)
-			.boxed()
-			.collect(toList());
+		while(SIZE_OF_LOTTO-- > 0){
+			Integer nowRandomNumber = new RandomNumber().randomNumber;
+			if(!searchNumber(nowRandomNumber)){
+				randomNumbers.add(nowRandomNumber);
+			}
+		}
+		return randomNumbers;
 	}
 
 	public int giveCountOfMatchNumber(List<Integer> winnerLotto) {

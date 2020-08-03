@@ -12,8 +12,8 @@ public class LottoController {
 	}
 
 	private void buyLotto() {
-		Price price = new Price(InputView.receivePrice());
-		CountsOfLotto countsOfLotto = new CountsOfLotto(price.getPrice());
+		//Price price = new Price(InputView.receivePrice());
+		CountsOfLotto countsOfLotto = new CountsOfLotto(InputView.receivePrice());
 		OutputView.printCountOfLotto(countsOfLotto.getCount());
 
 		UserLottoTickets userLottoTickets = new UserLottoTickets(countsOfLotto.getCount());
