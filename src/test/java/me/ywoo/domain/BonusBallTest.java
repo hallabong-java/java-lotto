@@ -13,8 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class BonusBallTest {
-	private static final List<Integer> winnerNumbers = new ArrayList<Integer>(
-		Arrays.asList(13, 11, 20, 19, 40, 45));
+	private static final List<Integer> winnerNumbers = new ArrayList<Integer>(Arrays.asList(13, 11, 20, 19, 40, 45));
 
 	@DisplayName("BonusBall(string) - 문자열 받아서 Integer로 숫자 생성")
 	@ParameterizedTest
