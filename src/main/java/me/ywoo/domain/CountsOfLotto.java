@@ -8,7 +8,11 @@ public class CountsOfLotto {
 		this.count = price.getPrice() / Price.PRICE_UNIT;
 	}
 
-	public int getCount() {
-		return count;
+	public boolean isValid() {
+		return count-->0;
+	}
+
+	public Long dividePrice(Long totalEarning){
+		return totalEarning/(count*Price.PRICE_UNIT);
 	}
 }

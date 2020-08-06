@@ -9,9 +9,9 @@ public class UserLottoTickets {
 
 	private List<LottoTicket> lottoNumbers;
 
-	public UserLottoTickets(int countOfLotto) {
+	public UserLottoTickets(CountsOfLotto countOfLotto) {
 		lottoNumbers = new ArrayList<>();
-		while (countOfLotto-- > MINIMUM_TO_COUNT) {
+		while (countOfLotto.isValid()) {
 			lottoNumbers.add(new LottoTicket());
 		}
 		Objects.requireNonNull(lottoNumbers, "발행된 로또 티켓이 없습니다.");
@@ -19,5 +19,9 @@ public class UserLottoTickets {
 
 	public List<LottoTicket> getLottoNumbers() {
 		return lottoNumbers;
+	}
+
+	public int size() {
+		return lottoNumbers.size();
 	}
 }

@@ -1,13 +1,10 @@
 package me.ywoo.domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
-
-import static java.util.stream.Collectors.toList;
 
 public class LottoTicket implements SearchAnyNumber {
+	private static final int INITIAL_COUNT = 0;
 	public static int UPPER_BOUNDARY = 45;
 	public static int LOWER_BOUNDARY = 1;
 	private static int SIZE_OF_LOTTO = 6;
@@ -20,7 +17,7 @@ public class LottoTicket implements SearchAnyNumber {
 	}
 
 	public List<Integer> generateLottoTicket() {
-		int sizeOfLotto = 6;
+		int sizeOfLotto = SIZE_OF_LOTTO;
 		while(sizeOfLotto-- > 0){
 			Integer nowRandomNumber = new RandomNumber().randomNumber;
 			if(!searchNumber(nowRandomNumber)){
@@ -31,7 +28,7 @@ public class LottoTicket implements SearchAnyNumber {
 	}
 
 	public int giveCountOfMatchNumber(List<Integer> winnerLotto) {
-		int countOfSameNumbers = 0;
+		int countOfSameNumbers = INITIAL_COUNT;
 		for (Integer numbers : randomNumbers) {
 			if (winnerLotto.contains(numbers)) {
 				countOfSameNumbers++;

@@ -13,18 +13,17 @@ public class LottoController {
 	}
 
 	private Long buyLotto(Yield yield) {
-		final Integer countsOfLottoNumber = new CountsOfLotto(InputView.receivePrice()).getCount();
-		OutputView.printCountOfLotto(countsOfLottoNumber);
+		CountsOfLotto countsOfLottoNumber = new CountsOfLotto(InputView.receivePrice());
 		UserLottoTickets userLottoTickets = new UserLottoTickets(countsOfLottoNumber);
-		OutputView.printTickets(userLottoTickets.getLottoNumbers());
+		OutputView.printTickets(userLottoTickets);
 
 		WinnerLotto winnerLotto = new WinnerLotto(InputView.receiveWinnerNumbers());
 		final Integer bonusBallNumber = new BonusBall(InputView.receiveBonusBallNumber()).getBonusBall();
 		if (winnerLotto.searchNumber(bonusBallNumber)) {
 			throw new IllegalArgumentException("보너스 볼의 값이 당첨 로또와 일치합니다.");
 		}
-		return yield.calculateYield(userLottoTickets.getLottoNumbers(), winnerLotto.getWinnerNumbers(),
-			bonusBallNumber, countsOfLottoNumber * Price.PRICE_UNIT);
+		return countsOfLottoNumber.dividePrice(
+			yield.calculateTotal(userLottoTickets.getLottoNumbers(), winnerLotto.getWinnerNumbers(), bonusBallNumber));
 	}
 
 	private void printResult(Long yieldNumber, Yield yield) {
