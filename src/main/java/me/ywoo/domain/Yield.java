@@ -5,10 +5,10 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Yield {
-	public Long totalEarning;
 	private ResultLotto resultLotto = new ResultLotto();
 
 	public Long calculateTotal(List<LottoTicket> lottoNumbers, List<Integer> winnerNumbers, int bonusBall) {
+		Long totalEarning = Long.valueOf(0);
 		Objects.requireNonNull(lottoNumbers, "가진 티켓이 없습니다.");
 		Objects.requireNonNull(winnerNumbers, "우승 로또가 없습니다.");
 
