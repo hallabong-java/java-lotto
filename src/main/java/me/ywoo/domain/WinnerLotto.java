@@ -48,4 +48,8 @@ public class WinnerLotto implements SearchAnyNumber{
 	public List<Integer> getWinnerNumbers() {
 		return winnerNumbers;
 	}
+
+	public Boolean matchNumber(Integer targetNumber) {
+		return winnerNumbers.contains(targetNumber);
+	}
 }
