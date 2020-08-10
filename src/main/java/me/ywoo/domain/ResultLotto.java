@@ -1,20 +1,24 @@
 package me.ywoo.domain;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 public class ResultLotto {
-	private static final int INITIAL_COUNT = 0;
+	private static final long INITIAL_COUNT = 0;
 
-	private Map<Rank, Integer> result;
+	private Map<Rank, Long> result;
 
 	public ResultLotto() {
-		result = new LinkedHashMap<>();
+		this.result = new LinkedHashMap<>();
 		for (Rank rank : Rank.values()) {
 			result.put(rank, INITIAL_COUNT);
 		}
+	}
+	public ResultLotto(Map<Rank, Long> matchResult) {
+		this.result = new LinkedHashMap<>(matchResult);
 	}
 
 	public void calculateResult(List<LottoTicket> lottoNumbers, List<Integer> winnerNumbers, int bonusBall) {
@@ -28,7 +32,7 @@ public class ResultLotto {
 		}
 	}
 
-	public Map<Rank, Integer> getResult() {
+	public Map<Rank, Long> getResult() {
 		return result;
 	}
 }

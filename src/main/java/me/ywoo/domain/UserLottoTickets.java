@@ -3,6 +3,8 @@ package me.ywoo.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class UserLottoTickets {
 	private static final int MINIMUM_TO_COUNT = 0;
@@ -23,5 +25,11 @@ public class UserLottoTickets {
 
 	public int size() {
 		return lottoNumbers.size();
+	}
+
+	public ResultLotto calculateMatchingNumber(WinnerLotto winnerLotto){
+		return lottoNumbers.stream()
+			.map(winnerLotto::matchNumber)
+			.collect(Collectors.collectingAndThen(Collectors.groupingBy(Function.identity(), Collectors.counting()), ResultLotto::new));
 	}
 }
