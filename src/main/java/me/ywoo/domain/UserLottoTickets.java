@@ -3,12 +3,8 @@ package me.ywoo.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class UserLottoTickets {
-	private static final int MINIMUM_TO_COUNT = 0;
-
 	private List<LottoTicket> lottoNumbers;
 
 	public UserLottoTickets(CountsOfLotto countOfLotto) {
@@ -19,17 +15,21 @@ public class UserLottoTickets {
 		Objects.requireNonNull(lottoNumbers, "발행된 로또 티켓이 없습니다.");
 	}
 
+	public List<Rank> calculateRankOfTicket(WinnerLotto winnerLotto, Integer bonusBall){
+		List<Rank> ranks = new ArrayList<>();
+		for(LottoTicket lottoTicket : lottoNumbers) {
+			int countsOfMatchNumber = lottoTicket.giveCountOfMatchNumber(winnerLotto);
+			Rank rank = Rank.valueOf(countsOfMatchNumber, lottoTicket.searchNumber(bonusBall));
+			ranks.add(rank);
+		}
+		return ranks;
+	}
+
 	public List<LottoTicket> getLottoNumbers() {
 		return lottoNumbers;
 	}
 
-	public int size() {
+	public int getSize() {
 		return lottoNumbers.size();
-	}
-
-	public ResultLotto calculateMatchingNumber(WinnerLotto winnerLotto){
-		return lottoNumbers.stream()
-			.map(winnerLotto::matchNumber)
-			.collect(Collectors.collectingAndThen(Collectors.groupingBy(Function.identity(), Collectors.counting()), ResultLotto::new));
 	}
 }

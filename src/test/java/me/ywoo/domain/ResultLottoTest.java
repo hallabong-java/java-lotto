@@ -21,7 +21,7 @@ class ResultLottoTest {
 	@DisplayName("calculateResult() - Null이 아닌지 검사")
 	@ParameterizedTest
 	@NullSource
-	void calculateResult_checkNonNull(final List<LottoTicket> lottoNumbers) {
+	void calculateResult_checkNonNull(final UserLottoTickets lottoNumbers) {
 		final List<Integer> winnerNumbers = new ArrayList<>();
 		winnerNumbers.add(3);
 		winnerNumbers.add(22);
@@ -30,7 +30,7 @@ class ResultLottoTest {
 		winnerNumbers.add(32);
 		winnerNumbers.add(41);
 		final int bonusBall = 10;
-		assertThatThrownBy(() -> new ResultLotto().calculateResult(lottoNumbers, winnerNumbers, bonusBall))
+		assertThatThrownBy(() -> new ResultLotto().calculateResult(lottoNumbers, new WinnerLotto("1, 2, 3, 4, 5, 6"), bonusBall))
 			.isInstanceOf(NullPointerException.class)
 			.hasMessage("가진 티켓이 없습니다.");
 	}

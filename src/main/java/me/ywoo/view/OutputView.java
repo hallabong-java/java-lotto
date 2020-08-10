@@ -1,6 +1,5 @@
 package me.ywoo.view;
 
-import me.ywoo.domain.CountsOfLotto;
 import me.ywoo.domain.LottoTicket;
 import me.ywoo.domain.Rank;
 import me.ywoo.domain.UserLottoTickets;
@@ -11,7 +10,7 @@ import java.util.List;
 public class OutputView {
 
 	public static void printTickets(UserLottoTickets userLottoTickets) {
-		System.out.println(userLottoTickets.size() + "개를 구매했습니다.");
+		System.out.println(userLottoTickets.getSize() + "개를 구매했습니다.");
 		for (LottoTicket lottoTicket : userLottoTickets.getLottoNumbers()) {
 			StringBuilder stringBuilder = new StringBuilder();
 			stringBuilder.append(makeString(lottoTicket));

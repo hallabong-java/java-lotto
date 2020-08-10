@@ -23,7 +23,7 @@ public class LottoController {
 			throw new IllegalArgumentException("보너스 볼의 값이 당첨 로또와 일치합니다.");
 		}
 		return countsOfLottoNumber.dividePrice(
-			yield.calculateTotal(userLottoTickets.getLottoNumbers(), winnerLotto.getWinnerNumbers(), bonusBallNumber));
+			yield.calculateTotal(userLottoTickets, winnerLotto, bonusBallNumber));
 	}
 
 	private void printResult(Long yieldNumber, Yield yield) {
