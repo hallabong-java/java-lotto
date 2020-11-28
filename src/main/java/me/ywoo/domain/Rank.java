@@ -1,0 +1,49 @@
+package me.ywoo.domain;
+
+import java.util.Arrays;
+
+public enum Rank {
+	NOTHING(0, 0, false),
+	FIFTH(3, 5_000, false),
+	FORTH(4, 50_000, false),
+	THIRD(5, 1_500_000, false),
+	SECOND(5, 30_000_000, true),
+	FIRST(6, 2_000_000_000, false);
+
+	private static final int MINIMAL_TO_PRIZE = 3;
+
+	private final int countOfSameNumber;
+	private final long priceOfLotto;
+	private final boolean bonusMatch;
+
+	Rank(int countOfSameNumber, long priceOfLotto, boolean bonusMatch) {
+		this.countOfSameNumber = countOfSameNumber;
+		this.priceOfLotto = priceOfLotto;
+		this.bonusMatch = bonusMatch;
+	}
+
+	public static Rank valueOf(int countOfSameNumber, boolean bonusMatch) {
+		if (countOfSameNumber < MINIMAL_TO_PRIZE) {
+			return NOTHING;
+		}
+		if (SECOND.matchRank(countOfSameNumber) && SECOND.bonusMatch == bonusMatch) {
+			return SECOND;
+		}
+		return Arrays.stream(values())
+			.filter(rank -> rank.matchRank(countOfSameNumber) && rank != SECOND)
+			.findAny()
+			.get();
+	}
+
+	private boolean matchRank(int countOfSameNumber) {
+		return this.countOfSameNumber == countOfSameNumber;
+	}
+
+	public long getPriceOfLotto() {
+		return priceOfLotto;
+	}
+
+	public int getCountOfSameNumber() {
+		return countOfSameNumber;
+	}
+}
